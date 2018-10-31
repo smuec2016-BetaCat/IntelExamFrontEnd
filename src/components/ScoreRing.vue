@@ -1,7 +1,8 @@
 <template>
     <div :style="style">
         <v-chart :options="option" ></v-chart>
-        <button @click="test">🌚</button>
+        <button @click="test" v-show="!inTest">🌝</button>
+        <button @click="stopTest" v-show="inTest">🌚</button>
     </div>
 </template>
 
@@ -86,13 +87,16 @@ export default {
                 height: config.chartHeight,
                 width: config.chartWidth
             },
-            display: 0
+            display: 0,
+            inTest: false,
+            setIntervalId: null
         }
     },
     methods: {
         test() {
             let self = this
-            setInterval(function() {
+            self.inTest = true
+            self.setIntervalId = setInterval(function() {
                 self.option.series[0].data[self.display + 2].label.show = false
                 let score = Math.round(Math.random() * 100)
                 self.option.series[0].data[0].value = score
@@ -100,6 +104,10 @@ export default {
                 self.option.series[0].data[score + 2].label.show = true
                 self.display = score
             }, 1000)
+        },
+        stopTest() {
+            this.inTest = false
+            clearInterval(this.setIntervalId)
         }
     }
 }

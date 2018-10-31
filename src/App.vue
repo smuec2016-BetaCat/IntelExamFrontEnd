@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+      <score-ring></score-ring>
     <router-view/>
   </div>
 </template>
