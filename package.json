@@ -8,12 +8,16 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^2.5.17",
+    "vue-router": "^3.0.1"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.0.3",
-    "@vue/cli-plugin-eslint": "^3.0.3",
-    "@vue/cli-service": "^3.0.3",
+    "@vue/cli-plugin-babel": "^3.1.0",
+    "@vue/cli-plugin-eslint": "^3.1.1",
+    "@vue/cli-service": "^3.1.1",
+    "@vue/eslint-config-prettier": "^4.0.0",
+    "eslint": "^5.8.0",
+    "eslint-plugin-vue": "^5.0.0-0",
     "vue-template-compiler": "^2.5.17"
   },
   "eslintConfig": {
@@ -23,9 +27,19 @@
     },
     "extends": [
       "plugin:vue/essential",
-      "eslint:recommended"
+      "eslint:recommended",
+      "@vue/prettier"
     ],
-    "rules": {},
+    "rules": {
+      "prettier/prettier": [
+        "warn",
+        {
+          "singleQuote": false,
+          "semi": false,
+          "tabWidth": 4
+        }
+      ]
+    },
     "parserOptions": {
       "parser": "babel-eslint"
     }
