@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <score-ring></score-ring>
     <!--<div id="nav">-->
       <!--<router-link to="/">Home</router-link> |-->
       <!--<router-link to="/about">About</router-link>-->
@@ -18,3 +19,9 @@
     margin-top: 60px;
 }
 </style>
+<script>
+import ScoreRing from "@/components/ScoreRing"
+export default {
+    components: { ScoreRing }
+}
+</script>
