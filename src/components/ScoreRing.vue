@@ -1,7 +1,7 @@
 <template>
     <div :style="style">
         <v-chart :options="option" ></v-chart>
-        <button @click="test" style="width: 50px; height: 50px; font-size: 24px">🌚</button>
+        <button @click="test">🌚</button>
     </div>
 
 </template>
@@ -18,8 +18,8 @@ export default {
     data: () => {
         let config = {
             chartColor: "rgb(0, 150, 255)",
-            chartHeight: "400px",
-            chartWidth: "400px",
+            chartHeight: "800px",
+            chartWidth: "800px",
             innerRadius: "60%",
             outerRadius: "70%",
             fontSize: 100,
@@ -107,4 +107,13 @@ export default {
 </script>
 
 <style scoped>
+button {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+}
+.echarts {
+    width: 100%;
+    height: 100%;
+}
 </style>
