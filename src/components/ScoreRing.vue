@@ -3,7 +3,6 @@
         <v-chart :options="option" ></v-chart>
         <button @click="test">🌚</button>
     </div>
-
 </template>
 
 <script>
