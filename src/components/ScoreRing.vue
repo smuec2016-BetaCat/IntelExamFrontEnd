@@ -3,7 +3,6 @@
         <v-chart :options="option" ></v-chart>
         <button @click="test" style="width: 50px; height: 50px; font-size: 24px">🌚</button>
     </div>
-
 </template>
 
 <script>
@@ -18,8 +17,8 @@ export default {
     data: () => {
         let config = {
             chartColor: "rgb(0, 150, 255)",
-            chartHeight: "400px",
-            chartWidth: "400px",
+            chartHeight: "200px",
+            chartWidth: "200px",
             innerRadius: "60%",
             outerRadius: "70%",
             fontSize: 100,
@@ -100,7 +99,7 @@ export default {
                 self.option.series[0].data[1].value = 100 - score
                 self.option.series[0].data[score + 2].label.show = true
                 self.display = score
-            }, 1000)
+            }, 500)
         }
     }
 }

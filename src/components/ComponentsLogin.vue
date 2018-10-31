@@ -28,7 +28,7 @@
 					</md-card-content>
 
 					<md-card-actions>
-						<md-button type="submit" class="md-primary">
+						<md-button class="md-primary">
 							<router-link to="/Examlnit">Log IN</router-link>
 						</md-button>
 					</md-card-actions>
