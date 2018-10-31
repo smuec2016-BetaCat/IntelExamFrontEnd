@@ -1,5 +1,5 @@
 <template>
-	<form style="display: flex" :style="formStyle" class="md-layout">
+	<form :style="formStyle" class="md-layout">
 			<md-card class="md-layout-item md-size-40 md-small-size-100" style="margin: auto">
 					<md-card-header>
 						<div class="md-title">The platform for teachers</div>

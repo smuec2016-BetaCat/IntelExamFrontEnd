@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<div class="md-layout md-gutter" id="my_container">
+	<div :style="formStyle" style="display:flex">
+		<div class="md-layout md-gutter" style="margin: auto">
 			<exam-type-card></exam-type-card>
 			<exam-type-card></exam-type-card>
 			<exam-type-card></exam-type-card>
@@ -13,12 +13,20 @@
 import ExamTypeCard from "../components/ExamTypeCard"
 export default {
     name: "Examlnit",
-    components: { ExamTypeCard }
+    components: { ExamTypeCard },
+    computed: {
+        formStyle: () => {
+            let screenHeight = document.body.clientHeight
+            return {
+                height: screenHeight + "px"
+            }
+        }
+    }
 }
 </script>
 
 <style scoped>
 #my_container {
-    margin: 10% 2%;
+    margin: auto;
 }
 </style>

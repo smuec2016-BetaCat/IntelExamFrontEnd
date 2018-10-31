@@ -1,10 +1,10 @@
 <template>
-	<div>
-		<div class="my_container">
+	<div style="display: flex" :style="formStyle">
+		<div style="margin: auto">
 			<md-card>
 				<div class="md-layout md-gutter md-alignment-top-center my_container">
 					<div class="md-layout-item md-size-5"></div>
-					<div class="md-layout-item md-elevation-5 md-size-25">
+					<div class="md-layout-item md-elevation-5 md-size-25" style="margin: auto">
 						<md-card-media>
 							<img src="../assets/person.png" alt="People">
 						</md-card-media>
@@ -26,7 +26,6 @@
 				</md-card-actions>
 			</md-card>
 		</div>
-
 	</div>
 </template>
 
@@ -40,6 +39,14 @@ export default {
         messagewarn: function() {
             alert("Something is wrong with the information of this Candidate!")
         }
+    },
+    computed: {
+        formStyle: () => {
+            let screenHeight = document.body.clientHeight
+            return {
+                height: screenHeight + 'px'
+            }
+        }
     }
 }
 </script>
@@ -52,18 +59,3 @@ export default {
     text-align: left;
 }
 </style>
-
-
-
-
-
-
-
-
-
-	.my_container {
-		padding: 3% 5%;
-	}
-	.mustleft {
-		text-align: left;
-	}

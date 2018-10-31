@@ -1,5 +1,5 @@
 <template>
-	<div id="my_container">
+	<div>
 		<components-candidate></components-candidate>
 	</div>
 </template>
@@ -13,7 +13,5 @@ export default {
 </script>
 
 <style scoped>
-#my_container {
-    margin-top: 60px;
-}
+
 </style>
