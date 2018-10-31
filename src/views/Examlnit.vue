@@ -1,6 +1,11 @@
 <template>
 	<div>
-		<exam-type-card></exam-type-card>
+		<div class="md-layout md-gutter" id="my_container">
+			<exam-type-card></exam-type-card>
+			<exam-type-card></exam-type-card>
+			<exam-type-card></exam-type-card>
+			<exam-type-card></exam-type-card>
+		</div>
 	</div>
 </template>
 
@@ -13,4 +18,7 @@ export default {
 </script>
 
 <style scoped>
+#my_container {
+    margin: 10% 2%;
+}
 </style>

@@ -1,6 +1,5 @@
 <template>
 	<div>
-		<div>hhhh</div>
 		<components-candidate></components-candidate>
 	</div>
 </template>

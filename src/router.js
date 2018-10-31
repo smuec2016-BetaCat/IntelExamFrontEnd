@@ -21,7 +21,7 @@ export default new Router({
         },
         {
             path: "/CandidateVerify",
-            name: "",
+            name: "CandidateVerify",
             component: CandidateVerify
         },
         {

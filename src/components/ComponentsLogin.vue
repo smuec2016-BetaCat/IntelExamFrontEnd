@@ -20,7 +20,7 @@
 						<div class="md-layout md-gutter">
 							<div class="md-layout-item md-small-size-100">
 								<md-field>
-									<label>Password toggle</label>
+									<label>Password</label>
 									<md-input v-model="password" type="password"></md-input>
 								</md-field>
 							</div>
@@ -28,8 +28,9 @@
 					</md-card-content>
 
 					<md-card-actions>
-						<md-button type="submit" class="md-primary">Log In</md-button>
-						<router-link to="/Examlnit">To Exam</router-link>
+						<md-button type="submit" class="md-primary">
+							<router-link to="/Examlnit">Log IN</router-link>
+						</md-button>
 					</md-card-actions>
 				</md-card>
 			</md-content>
