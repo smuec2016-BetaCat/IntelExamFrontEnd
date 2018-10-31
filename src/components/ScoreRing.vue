@@ -28,7 +28,7 @@ export default {
 
         let data = [
             {
-                value: 80,
+                value: 0,
                 name: "score",
                 label: {
                     show: false
@@ -38,7 +38,7 @@ export default {
                 }
             },
             {
-                value: 20,
+                value: 100,
                 name: "blank",
                 label: {
                     show: false
@@ -97,6 +97,7 @@ export default {
                 self.option.series[0].data[self.display + 2].label.show = false
                 let score = Math.round(Math.random() * 100)
                 self.option.series[0].data[0].value = score
+                self.option.series[0].data[1].value = 100 - score
                 self.option.series[0].data[score + 2].label.show = true
                 self.display = score
             }, 1000)
