@@ -1,6 +1,9 @@
 import Vue from "vue"
 import Router from "vue-router"
-import Home from "./views/Home.vue"
+import Login from "./views/Login"
+import Examlnit from "./views/Examlnit"
+import CandidateVerify from "./views/CandidateVerify"
+import Dashboard from "./views/Dashboard"
 
 Vue.use(Router)
 
@@ -8,8 +11,23 @@ export default new Router({
     routes: [
         {
             path: "/",
-            name: "home",
-            component: Home
+            name: "Login",
+            component: Login
+        },
+        {
+            path: "/Examlnit",
+            name: "Examlnit",
+            component: Examlnit
+        },
+        {
+            path: "/CandidateVerify",
+            name: "",
+            component: CandidateVerify
+        },
+        {
+            path: "/Dashboard",
+            name: "",
+            component: Dashboard
         },
         {
             path: "/about",
