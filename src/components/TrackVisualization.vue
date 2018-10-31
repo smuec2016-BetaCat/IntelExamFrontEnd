@@ -1,9 +1,10 @@
 <template>
 	<div>
-		<!--<div class="md-layout md-alignment-center-center">-->
-			<!--<button class="btn btn-primary" onclick="wavesurfer.playPause()">-->
-				<!--Play-->
-			<!--</button>-->
+		<!--&lt;!&ndash;<div class="md-layout md-alignment-center-center">&ndash;&gt;-->
+		<!--<div id="waveform"></div>-->
+		<!--<button class="btn btn-primary" onclick="wavesurfer.playPause()">-->
+			<!--Play-->
+		<!--</button>-->
 		<!--</div>-->
 		<!--<div class="md-layout md-alignment-center-center">-->
 			<!--<md-button class="md-raised my_box" disabled>Disabled Here has a picture</md-button>-->
@@ -12,6 +13,7 @@
 </template>
 
 <script>
+// import WaveSurfer from "../wave.min"
 // var wavesurfer = WaveSurfer.create({
 //     container: "#waveform",
 //     waveColor: "darkorange",
