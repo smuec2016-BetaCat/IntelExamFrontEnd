@@ -46,9 +46,24 @@ export default {
 
 <style scoped>
 .my_container {
-    padding: 3% 5%;
+    padding: 3% 2%;
 }
 .mustleft {
     text-align: left;
 }
 </style>
+
+
+
+
+
+
+
+
+
+	.my_container {
+		padding: 3% 5%;
+	}
+	.mustleft {
+		text-align: left;
+	}

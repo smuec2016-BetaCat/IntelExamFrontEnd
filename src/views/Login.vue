@@ -1,7 +1,5 @@
 <template>
-	<div id="my_container">
-		<components-login></components-login>
-	</div>
+	<components-login></components-login>
 </template>
 
 <script>
@@ -13,7 +11,4 @@ export default {
 </script>
 
 <style scoped>
-#my_container {
-    margin-top: 60px;
-}
 </style>

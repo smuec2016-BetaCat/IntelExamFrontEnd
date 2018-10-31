@@ -1,8 +1,6 @@
 <template>
-	<div>
-		<form>
-			<div class="md-layout md-alignment-center-center">
-				<md-card class="md-layout-item md-size-40 md-small-size-100">
+	<form style="display: flex" :style="formStyle" class="md-layout">
+			<md-card class="md-layout-item md-size-40 md-small-size-100" style="margin: auto">
 					<md-card-header>
 						<div class="md-title">The platform for teachers</div>
 					</md-card-header>
@@ -32,15 +30,21 @@
 							<router-link to="/Examlnit">Log IN</router-link>
 						</md-button>
 					</md-card-actions>
-				</md-card>
-			</div>
-		</form>
-	</div>
+			</md-card>
+	</form>
 </template>
 
 <script>
 export default {
-    name: "ComponentsLogin"
+    name: "ComponentsLogin",
+    computed: {
+        formStyle: () => {
+            let screenHeight = document.body.clientHeight
+            return {
+                height: screenHeight + "px"
+            }
+        }
+    }
 }
 </script>
 
