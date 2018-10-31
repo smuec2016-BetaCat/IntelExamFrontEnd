@@ -1,18 +1,27 @@
 <template>
 	<div>
 		<navigation></navigation>
+		<br>
 		<TrackVisualization></TrackVisualization>
-		<div class="md-layout md-gutter">
-			<div class="md-layout-item">
+		<div class="md-layout md-gutter md-alignment-center-center">
+			<div class="md-layout-item md-size-10"></div>
+			<div class="md-layout-item md-layout md-alignment-center-center">
 				<score-ring></score-ring>
 			</div>
-			<div class="md-layout-item">
+			<div class="md-layout-item md-layout md-alignment-center-center">
 				<score-ring></score-ring>
 			</div>
+			<div class="md-layout-item md-layout md-alignment-center-center">
+				<score-ring></score-ring>
+			</div>
+			<div class="md-layout-item md-layout md-alignment-center-center">
+				<score-ring></score-ring>
+			</div>
+			<div class="md-layout-item md-size-10"></div>
 		</div>
 		<br><br><br>
-		<md-button v-on:click="goto" class="md-primary md-raised">Go Rating</md-button>
-		<md-button v-on:click="goto" class="md-primary md-raised">Next Trab</md-button>
+		<md-button v-on:click="goto" class="md-raised">Go Rating</md-button>
+		<md-button v-on:click="goto" class="md-raised">Next Trab</md-button>
 	</div>
 </template>
 
@@ -32,4 +41,5 @@ export default {
 </script>
 
 <style scoped>
+
 </style>

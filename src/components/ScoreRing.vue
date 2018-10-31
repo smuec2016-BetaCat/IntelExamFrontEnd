@@ -18,11 +18,11 @@ export default {
     data: () => {
         let config = {
             chartColor: "rgb(0, 150, 255)",
-            chartHeight: "800px",
-            chartWidth: "800px",
+            chartHeight: "200px",
+            chartWidth: "200px",
             innerRadius: "60%",
             outerRadius: "70%",
-            fontSize: 100,
+            fontSize: 25,
             textColor: "rgb(0, 0, 255)"
         }
 
@@ -115,9 +115,9 @@ export default {
 
 <style scoped>
 button {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
+    width: 35px;
+    height: 35px;
+    font-size: 1px;
 }
 .echarts {
     width: 100%;

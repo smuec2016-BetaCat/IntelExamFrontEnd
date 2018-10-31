@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<form>
-			<md-content class="md-layout md-alignment-center-center">
+			<div class="md-layout md-alignment-center-center">
 				<md-card class="md-layout-item md-size-40 md-small-size-100">
 					<md-card-header>
 						<div class="md-title">The platform for teachers</div>
@@ -33,7 +33,7 @@
 						</md-button>
 					</md-card-actions>
 				</md-card>
-			</md-content>
+			</div>
 		</form>
 	</div>
 </template>

@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-      <score-ring></score-ring>
     <router-view/>
   </div>
 </template>
@@ -16,8 +15,4 @@
 }
 </style>
 <script>
-import ScoreRing from "@/components/ScoreRing"
-export default {
-    components: { ScoreRing }
-}
 </script>

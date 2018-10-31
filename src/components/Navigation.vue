@@ -1,5 +1,5 @@
 <template>
-	<md-toolbar class="md-primary">
+	<md-toolbar >
 		<h3 class="md-title">Here has a music name</h3>
 	</md-toolbar>
 </template>

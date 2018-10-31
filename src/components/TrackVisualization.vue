@@ -1,15 +1,25 @@
 <template>
 	<div>
-		<md-content class="md-layout md-alignment-center-center">
-			<md-button class="md-raised my_box" disabled>Disabled Here has a picture</md-button>
-		</md-content>
-		<md-content class="md-layout md-alignment-center-center">
-			<md-button class="md-raised my_box" disabled>Disabled Here has a picture</md-button>
-		</md-content>
+		<!--<div class="md-layout md-alignment-center-center">-->
+			<!--<button class="btn btn-primary" onclick="wavesurfer.playPause()">-->
+				<!--Play-->
+			<!--</button>-->
+		<!--</div>-->
+		<!--<div class="md-layout md-alignment-center-center">-->
+			<!--<md-button class="md-raised my_box" disabled>Disabled Here has a picture</md-button>-->
+		<!--</div>-->
 	</div>
 </template>
 
 <script>
+// var wavesurfer = WaveSurfer.create({
+//     container: "#waveform",
+//     waveColor: "darkorange",
+//     progressColor: "purple",
+//     splitChannels: true,
+//     height: 64
+// })
+// wavesurfer.load("https://wavesurfer-js.org/example/split-channels/stereo.mp3")
 export default {
     name: "TrackVisualization"
 }
