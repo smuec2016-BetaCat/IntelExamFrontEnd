@@ -1,5 +1,5 @@
 <template>
-	<form :style="formStyle" class="md-layout">
+	<form :style="formStyle" class="md-layout my-background">
 			<md-card class="md-layout-item md-size-40 md-small-size-100" style="margin: auto">
 					<md-card-header>
 						<div class="md-title">The platform for teachers</div>
@@ -49,4 +49,11 @@ export default {
 </script>
 
 <style scoped>
+/*.md-card{*/
+/*background-color: saddlebrown;*/
+/*}*/
+.my-background {
+    background: url("../assets/background.jpg") no-repeat;
+    background-size: 100% 100%;
+}
 </style>
