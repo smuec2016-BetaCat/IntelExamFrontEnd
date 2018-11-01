@@ -19,7 +19,7 @@
 			</div>
 			<div class="md-layout-item md-size-10"></div>
 		</div>
-		<br><br><br>
+		<br><br><br><br><br><br>
 		<md-button v-on:click="goto" class="md-raised">Go Rating</md-button>
 		<md-button v-on:click="goto" class="md-raised">Next Trab</md-button>
 	</div>
