@@ -4,7 +4,6 @@
 			<exam-type-card></exam-type-card>
 			<exam-type-card></exam-type-card>
 			<exam-type-card></exam-type-card>
-			<exam-type-card></exam-type-card>
 		</div>
 	</div>
 </template>

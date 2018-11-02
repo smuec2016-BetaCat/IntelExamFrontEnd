@@ -14,9 +14,6 @@
 			<div class="md-layout-item md-layout md-alignment-center-center">
 				<score-ring></score-ring>
 			</div>
-			<div class="md-layout-item md-layout md-alignment-center-center">
-				<score-ring></score-ring>
-			</div>
 			<div class="md-layout-item md-size-10"></div>
 		</div>
 		<br><br><br><br><br><br>
@@ -34,7 +31,7 @@ export default {
     components: { Navigation, ScoreRing, TrackVisualization },
     methods: {
         goto: function() {
-            this.$router.push({ path: "/" })
+            this.$router.push({ path: "/CandidateVerify" })
         }
     }
 }

@@ -23,7 +23,7 @@ export default {
         goto: function() {
             const that = this
             setTimeout(function() {
-                that.$router.push({ path: "/CandidateVerify" })
+                that.$router.push({ path: "/Dashboard" })
             }, 500)
         }
     }

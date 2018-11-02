@@ -1,6 +1,6 @@
 <template>
 	<div style="display: flex" :style="formStyle">
-		<div style="margin: auto">
+		<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item">
 			<md-card>
 				<div class="md-layout md-gutter md-alignment-top-center my_container">
 					<div class="md-layout-item md-size-5"></div>
@@ -34,7 +34,7 @@ export default {
     name: "ComponentsCandidate",
     methods: {
         goto: function() {
-            this.$router.push({ path: "/Dashboard" })
+            this.$router.push({ path: "/Examlnit" })
         },
         messagewarn: function() {
             alert("Something is wrong with the information of this Candidate!")
