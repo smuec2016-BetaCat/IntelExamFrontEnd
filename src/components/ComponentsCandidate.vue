@@ -55,6 +55,7 @@ export default {
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
     },
+    // the setInterval must be destroyed, or when router to other page will go wrong
     beforeDestroy: function() {
         clearInterval(this.t)
     }

@@ -51,6 +51,7 @@ export default {
             }
         }
     },
+    // when the second loop , this is the first page we see
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
     },
