@@ -1,6 +1,6 @@
 <template>
-	<div style="display: flex" :style="formStyle">
-		<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item">
+	<div style="display: flex" :style="formStyle" id="my-candidate">
+		<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item md-size-90">
 			<md-card>
 				<div class="md-layout md-gutter md-alignment-top-center my_container">
 					<div class="md-layout-item md-size-5"></div>
@@ -38,15 +38,25 @@ export default {
         },
         messagewarn: function() {
             alert("Something is wrong with the information of this Candidate!")
+        },
+        screenChange: function() {
+            document.getElementById("my-candidate").style.height =
+                window.innerHeight + "px"
         }
     },
     computed: {
         formStyle: () => {
             let screenHeight = document.body.clientHeight
             return {
-                height: screenHeight + 'px'
+                height: screenHeight + "px"
             }
         }
+    },
+    created: function() {
+        this.t = setInterval(this.screenChange, 2000)
+    },
+    beforeDestroy: function() {
+        clearInterval(this.t)
     }
 }
 </script>
