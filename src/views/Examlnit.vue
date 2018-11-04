@@ -1,9 +1,15 @@
 <template>
 	<div :style="formStyle" style="display:flex">
 		<div class="md-layout md-gutter" style="margin: auto">
-			<exam-type-card></exam-type-card>
-			<exam-type-card></exam-type-card>
-			<exam-type-card></exam-type-card>
+			<div class="md-layout-item md-xsmall-size-100">
+				<exam-type-card></exam-type-card>
+			</div>
+			<div class="md-layout-item md-xsmall-size-100">
+				<exam-type-card></exam-type-card>
+			</div>
+			<div class="md-layout-item md-xsmall-size-100">
+				<exam-type-card></exam-type-card>
+			</div>
 		</div>
 	</div>
 </template>
@@ -27,5 +33,10 @@ export default {
 <style scoped>
 #my_container {
     margin: auto;
+}
+@media (max-width: 600px) {
+    .md-layout.md-gutter > .md-layout-item {
+        margin: 1%;
+    }
 }
 </style>
