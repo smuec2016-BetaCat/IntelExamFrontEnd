@@ -15,7 +15,7 @@ export default {
     components: { ExamTypeCard },
     data: function() {
         return {
-            list: [1, 2, 3]
+            list: [1, 2,3,4]
         }
     },
     computed: {
