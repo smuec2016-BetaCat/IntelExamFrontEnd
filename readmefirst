@@ -1,0 +1,20 @@
+1.main.js is used to import different packages we need and inload the main things we need in the project.
+2.router.js is used to set the routes.
+3.App.vue is the window component of the project.
+4.we write different components in the views , which is used for routes.
+and we write components in the components ,used for views.
+6.click into the app.vue .You can write the theme of the vue-material in the style.
+warning! vue-material use sass! it's different from css ,but they are similar
+7.in every component in components ,you will see style label
+if you are careful,you will see scoped in the label ,it means the style is used in this component only.
+from other component ,you can't use the same id and class you set
+if you want to use globally,please set the css or sass in app.vue
+8.assets is the place we place static file.
+of course ,we'd better to put the file on the web sever ,but we don't have one for now
+9.the file in public ,we don't use for now, you can pass them
+10.package.json is the place to set the package we install ,for now you don't need to set anything into
+it ,pass it !
+11.the same as the package-lock,json,gitignore ,bable.config.js ,pass it
+13.usually we just need to change the content in file src, remember it !
+13.remember to commit and push the things you write,
+if you are not sure about you write ,you can ask anyone or push them on other branch

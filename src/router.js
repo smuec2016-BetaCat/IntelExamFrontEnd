@@ -6,7 +6,7 @@ import CandidateVerify from "./views/CandidateVerify"
 import Dashboard from "./views/Dashboard"
 
 Vue.use(Router)
-
+// the place to set the routes, in order to set the component, you should import first
 export default new Router({
     routes: [
         {

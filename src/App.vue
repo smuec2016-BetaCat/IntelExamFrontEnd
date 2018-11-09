@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <!--router-view is a station label for the routes in router.js-->
     <router-view/>
   </div>
 </template>
