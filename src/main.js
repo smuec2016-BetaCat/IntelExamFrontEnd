@@ -6,11 +6,9 @@ import VueMaterial from "vue-material"
 import "vue-material/dist/vue-material.min.css"
 import "vue-material/dist/theme/default.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
-import VueResource from "vue-resource"
-import Vuelidate from "vuelidate"
 
-Vue.use(Vuelidate)
-Vue.use(VueResource)
+
+
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.component("v-chart", ECharts)
