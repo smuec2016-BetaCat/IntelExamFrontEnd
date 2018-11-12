@@ -15,7 +15,6 @@
     /*margin-top: 60px;*/
 }
 </style>
-<style lang="scss">
-</style>
 <script>
+export default {}
 </script>
