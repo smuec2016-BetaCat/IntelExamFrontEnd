@@ -1,5 +1,13 @@
 <template>
-	<components-login></components-login>
+	<div>
+		<components-login></components-login>
+		<!--<div v-for="item in list">-->
+			<!--<ul>-->
+				<!--<li>{{item.firstName}}</li>-->
+				<!--<li>{{item.lastName}}</li>-->
+			<!--</ul>-->
+		<!--</div>-->
+	</div>
 </template>
 
 <script>
@@ -33,12 +41,4 @@ export default {
 </script>
 
 <style scoped>
-.my-background {
-    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-        url("../assets/background.jpg");
-    background-position: center center;
-    background-attachment: fixed;
-    background-size: cover;
-    background-color: black;
-}
 </style>
