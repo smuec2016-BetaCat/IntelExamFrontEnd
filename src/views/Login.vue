@@ -1,5 +1,8 @@
 <template>
-	<components-login></components-login>
+    <div class="my-background">
+        <components-login></components-login>
+    </div>
+
 </template>
 
 <script>
@@ -11,4 +14,12 @@ export default {
 </script>
 
 <style scoped>
+.my-background {
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url("../assets/background.jpg");
+    background-position: center center;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: black;
+}
 </style>

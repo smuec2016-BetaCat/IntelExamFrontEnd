@@ -8,8 +8,6 @@ import "vue-material/dist/vue-material.min.css"
 import "vue-material/dist/theme/default.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 
-
-
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.component("v-chart", ECharts)
