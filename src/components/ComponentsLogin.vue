@@ -11,7 +11,9 @@
 					<div class="md-layout-item md-small-size-100">
 						<md-field>
 							<label for="name">工号</label>
-							<md-input name="name" id="name" autofocus="autofocus"/>
+							<md-input name="name" id="name" autofocus="autofocus" v-model.trim="$v.form.myname.$model"/>
+							<div class="error" v-if="!$v.form.myname.required && $v.form.myname.$anyDirty">您必须填写工号</div>
+							<div class="error" v-if="!$v.form.myname.numeric && $v.form.myname.$anyDirty">工号必须为数字</div>
 						</md-field>
 					</div>
 				</div>
@@ -20,28 +22,60 @@
 					<div class="md-layout-item md-small-size-100">
 						<md-field>
 							<label>密码</label>
-							<md-input type="password"></md-input>
+							<md-input type="password" v-model.trim="$v.form.password.$model"></md-input>
+							<div class="error" v-if="!$v.form.password.required && $v.form.password.$anyDirty">您必须填写密码</div>
+							<div class="error2" v-if="$v.form.$error">密码与工号是必填的</div>
 						</md-field>
 					</div>
 				</div>
 			</md-card-content>
 
 			<md-card-actions>
-				<md-button class="md-primary">
-					<router-link to="/CandidateVerify">登录</router-link>
-				</md-button>
+				<md-button class="md-primary" @click="PostAndLog">登陆</md-button>
 			</md-card-actions>
 		</md-card>
 	</form>
 </template>
 
 <script>
+import { required , numeric } from 'vuelidate/lib/validators'
 export default {
     name: "ComponentsLogin",
+    data() {
+        return {
+            form: {
+                myname: "",
+                password: ""
+
+    }
+        }
+    },
+    validations: {
+        form: {
+            myname: {
+                required,
+                numeric
+            },
+            password: {
+                required
+            }
+        }
+    },
     methods: {
         screenChange: function() {
             document.getElementById("my-form").style.height =
                 window.innerHeight + "px"
+        },
+        PostAndLog: function() {
+            if (this.$v.form.$invalid) {
+                this.$v.$touch()
+            } else{
+                // push the form
+                this.goto()
+            }
+        },
+        goto: function() {
+            this.$router.push({ path: "/CandidateVerify" })
         }
     },
     computed: {
@@ -63,4 +97,16 @@ export default {
 </script>
 
 <style scoped>
+	.error {
+		color: red;
+		height: 20px;
+		position: absolute;
+		bottom: -22px;
+	}
+	.error2 {
+		color: red;
+		height: 20px;
+		position: absolute;
+		bottom: -44px;
+	}
 </style>
