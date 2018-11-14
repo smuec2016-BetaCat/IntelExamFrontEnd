@@ -1,8 +1,8 @@
 <template>
 	<form v-bind:style="formStyle" class="md-layout my-background" id="my-form">
-		<md-card class="md-layout-item md-size-40 md-small-size-60 md-xsmall-size-100" style="margin: auto">
+		<md-card class="md-layout-item md-size-30 md-small-size-60 md-xsmall-size-100" style="margin: auto">
 			<md-card-header>
-				<div class="md-title">The platform for teachers</div>
+				<div class="md-title">考官登录</div>
 			</md-card-header>
 
 			<md-card-content>
