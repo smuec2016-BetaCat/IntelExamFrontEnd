@@ -24,7 +24,7 @@
 							<label>密码</label>
 							<md-input type="password" v-model.trim="$v.form.password.$model"></md-input>
 							<div class="error" v-if="!$v.form.password.required && $v.form.password.$anyDirty">您必须填写密码</div>
-							<div class="error2" v-if="$v.form.$error">密码与工号是必填的</div>
+							<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>
 						</md-field>
 					</div>
 				</div>
