@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <template>
 	<form v-bind:style="formStyle"  class="md-layout" id="my-form">
-		<md-card class="md-layout-item md-size-30 md-small-size-50 md-xsmall-size-100" style="margin: auto">
+		<md-card class="md-layout-item md-size-25 md-small-size-50 md-xsmall-size-100" style="margin: auto">
 			<md-card-header>
 				<div class="md-title">考官登录</div>
 			</md-card-header>
@@ -22,10 +22,17 @@
 					<div class="md-layout-item md-small-size-100">
 						<md-field>
 							<label>密码</label>
-							<md-input type="password" v-model.trim="$v.form.password.$model"></md-input>
+							<md-input type="password" v-model.trim="$v.form.password.$model" v-on:click="slidebar"></md-input>
 							<div class="error" v-if="!$v.form.password.required && $v.form.password.$anyDirty">您必须填写密码</div>
-							<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>
+							<!--<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>-->
+							<div class="error2" v-if="!dataFromChild && $v.form.password.$anyDirty">您需要通过以下验证</div>
 						</md-field>
+					</div>
+				</div>
+				<br>
+				<div class="md-layout md-gutter">
+					<div class="md-layout-item md-small-size-100">
+						<slider-validation v-if="slide" v-on:listenToChildEvent="showMsgFromChild"></slider-validation>
 					</div>
 				</div>
 			</md-card-content>
@@ -39,15 +46,19 @@
 
 <script>
 import { required , numeric } from 'vuelidate/lib/validators'
+import SliderValidation from "./Slidervalidation";
+import {confirmSuccess} from "./Slidervalidation";
 export default {
     name: "ComponentsLogin",
+    components: {SliderValidation},
     data() {
         return {
+            slide:false,
+			dataFromChild: false,
             form: {
                 myname: "",
                 password: ""
-
-    }
+    		}
         }
     },
     validations: {
@@ -66,17 +77,30 @@ export default {
             document.getElementById("my-form").style.height =
                 window.innerHeight + "px"
         },
+		showMsgFromChild:function(data){
+            this.dataFromChild = data
+		},
         PostAndLog: function() {
-            if (!this.$v.form.$invalid) {
+            if (this.$v.form.$invalid) {
                 this.$v.$touch()
-            } else{
+                this.slidebar()
+            }
+            else if (!this.dataFromChild) {
+				alert("您必须通过验证")
+			}
+			else {
                 // push the form
-                this.goto()
+                alert("虽然没有后端验证，不过您现在可以访问了")
+				this.goto()
             }
         },
         goto: function() {
             this.$router.push({ path: "/CandidateVerify" })
-        }
+        },
+		slidebar:function () {
+			this.slide = true
+        },
+
     },
     computed: {
         formStyle: () => {
@@ -98,13 +122,11 @@ export default {
 
 <style scoped>
 	.error {
-		color: red;
 		height: 20px;
 		position: absolute;
 		bottom: -22px;
 	}
 	.error2 {
-		color: red;
 		height: 20px;
 		position: absolute;
 		bottom: -44px;
