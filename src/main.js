@@ -5,7 +5,6 @@ import router from "./router"
 import ECharts from "vue-echarts/components/ECharts"
 import VueMaterial from "vue-material"
 import "vue-material/dist/vue-material.min.css"
-import "vue-material/dist/theme/default.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 import Vuelidate from "vuelidate"
 

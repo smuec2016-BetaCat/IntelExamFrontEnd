@@ -1,6 +1,6 @@
 <template>
 	<div class="md-layout-item" v-on:click="goto">
-		<md-card class="md-elevation-6 md-with-hover">
+		<md-card class="md-elevation-6 md-with-hover md-accent">
 			<md-ripple>
 				<md-card-header>
 					<div class="md-title">Exam Type</div>

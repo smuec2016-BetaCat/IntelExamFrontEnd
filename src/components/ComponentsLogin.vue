@@ -31,7 +31,7 @@
 			</md-card-content>
 
 			<md-card-actions>
-				<md-button class="md-primary" @click="PostAndLog">登陆</md-button>
+				<md-button class="md-primary md-raised" @click="PostAndLog">登陆</md-button>
 			</md-card-actions>
 		</md-card>
 	</form>
@@ -67,7 +67,7 @@ export default {
                 window.innerHeight + "px"
         },
         PostAndLog: function() {
-            if (this.$v.form.$invalid) {
+            if (!this.$v.form.$invalid) {
                 this.$v.$touch()
             } else{
                 // push the form
@@ -108,5 +108,8 @@ export default {
 		height: 20px;
 		position: absolute;
 		bottom: -44px;
+	}
+	.md-card div{
+		color: #8b4513;
 	}
 </style>

@@ -4,7 +4,7 @@
 			<md-card>
 				<div class="md-layout md-gutter md-alignment-top-center my_container">
 					<div class="md-layout-item md-size-5"></div>
-					<div class="md-layout-item md-elevation-5 md-size-25" style="margin: auto">
+					<div class="md-layout-item md-elevation-1 md-size-25" style="margin: auto">
 						<md-card-media>
 							<img src="../assets/person.png" alt="People">
 						</md-card-media>
@@ -21,8 +21,8 @@
 					</div>
 				</div>
 				<md-card-actions>
-					<md-button class="md-accent" v-on:click=messagewarn>Something wrong</md-button>
-					<md-button v-on:click="goto">Go to Next Step</md-button>
+					<md-button class="md-accent md-raised" v-on:click=messagewarn>Something wrong</md-button>
+					<md-button class="md-primary md-raised" v-on:click="goto">Go to Next Step</md-button>
 				</md-card-actions>
 			</md-card>
 		</div>
