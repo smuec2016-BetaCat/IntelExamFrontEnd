@@ -4,7 +4,6 @@ import Login from "./views/Login"
 import Examlnit from "./views/Examlnit"
 import CandidateVerify from "./views/CandidateVerify"
 import Dashboard from "./views/Dashboard"
-import test from "./views/test"
 
 Vue.use(Router)
 // the place to set the routes, in order to set the component, you should import first
@@ -27,12 +26,8 @@ export default new Router({
         },
         {
             path: "/Dashboard",
-            name: "",
+            name: "Dashboard",
             component: Dashboard
-        },
-        {
-            path: "/haha",
-            component: test
         },
         {
             path: "/about",
