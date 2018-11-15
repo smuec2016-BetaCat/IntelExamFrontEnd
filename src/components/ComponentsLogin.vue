@@ -55,6 +55,7 @@ export default {
         return {
             slide:false,
 			dataFromChild: false,
+			flag:true,
             form: {
                 myname: "",
                 password: ""
@@ -77,22 +78,47 @@ export default {
             document.getElementById("my-form").style.height =
                 window.innerHeight + "px"
         },
+        isPc: function() {
+            var userAgentInfo = navigator.userAgent
+            var Agents = [
+                "Android",
+                "iPhone",
+                "SymbianOS",
+                "Windows Phone",
+                "iPad",
+                "iPod"
+            ]
+            var flag = true
+            for (var v = 0; v < Agents.length; v++) {
+                if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                    flag = false
+                    break
+                }
+            }
+            this.flag = flag
+        },
 		showMsgFromChild:function(data){
             this.dataFromChild = data
 		},
         PostAndLog: function() {
-            if (this.$v.form.$invalid) {
-                this.$v.$touch()
-                this.slidebar()
-            }
-            else if (!this.dataFromChild) {
-				alert("您必须通过验证")
+            if (this.flag){
+                if (this.$v.form.$invalid) {
+                    this.$v.$touch()
+                    this.slidebar()
+                }
+                else if (!this.dataFromChild) {
+                    alert("您必须通过验证")
+                }
+                else {
+                    // push the form
+                    alert("虽然没有后端验证，不过您现在可以访问了")
+                    this.goto()
+                }
 			}
-			else {
-                // push the form
-                alert("虽然没有后端验证，不过您现在可以访问了")
-				this.goto()
-            }
+            else {
+				alert("暂不支持移动端验证，直接进行路由跳转")
+                this.goto()
+			}
         },
         goto: function() {
             this.$router.push({ path: "/CandidateVerify" })
@@ -113,6 +139,7 @@ export default {
     // when the second loop , this is the first page we see
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
+		this.isPc()
     },
     beforeDestroy: function() {
         clearInterval(this.t)
