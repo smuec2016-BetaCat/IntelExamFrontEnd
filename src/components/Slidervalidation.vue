@@ -12,17 +12,20 @@ export default {
     data() {
         return {
             beginClientX: 0,
-            mouseMoveStata: false,
-            maxwidth: "",
+            mouseMoveStatus: false,
+            maxWidth: "",
             confirmWords: "拖动滑块验证",
             confirmSuccess: false
         }
     },
     methods: {
+        select: function(selector) {
+            return document.querySelector(selector)
+        },
         mousedownFn: function(e) {
             if (!this.confirmSuccess) {
                 e.preventDefault && e.preventDefault()
-                this.mouseMoveStata = true
+                this.mouseMoveStatus = true
                 this.beginClientX = e.clientX
             }
         },
@@ -31,45 +34,38 @@ export default {
             this.confirmWords = "验证通过"
             this.sendMsgToParent()
             if (window.addEventListener) {
-                document
-                    .getElementsByTagName("html")[0]
-                    .removeEventListener("mousemove", this.mouseMoveFn)
-                document
-                    .getElementsByTagName("html")[0]
-                    .removeEventListener("mouseup", this.moseUpFn)
+                this.select("html").removeEventListener(
+                    "mousemove",
+                    this.mouseMoveFn
+                )
+                this.select("html").removeEventListener(
+                    "mouseup",
+                    this.moseUpFn
+                )
             } else {
-                document
-                    .getElementsByTagName("html")[0]
-                    .removeEventListener("mouseup", () => {})
+                this.select("html").removeEventListener("mouseup", () => {})
             }
-            document.getElementsByClassName("drag_text")[0].style.color =
-                "#8b4513"
-            document.getElementsByClassName("handler")[0].style.left =
-                this.maxwidth + "px"
-            document.getElementsByClassName("drag_bg")[0].style.width =
-                this.maxwidth + "px"
+            this.select(".drag_text").style.color = "#8b4513"
+            this.select(".handler").style.left = this.maxWidth + "px"
+            this.select(".drag_bg").style.width = this.maxWidth + "px"
         },
         mouseMoveFn(e) {
-            if (this.mouseMoveStata) {
+            if (this.mouseMoveStatus) {
                 let width = e.clientX - this.beginClientX
-                if (width > 0 && width <= this.maxwidth) {
-                    document.getElementsByClassName("handler")[0].style.left =
-                        width + "px"
-                    document.getElementsByClassName("drag_bg")[0].style.width =
-                        width + "px"
-                } else if (width > this.maxwidth) {
+                if (width > 0 && width <= this.maxWidth) {
+                    this.select(".handler").style.left = width + "px"
+                    this.select(".drag_bg").style.width = width + "px"
+                } else if (width > this.maxWidth) {
                     this.successFunction()
                 }
             }
         },
         moseUpFn(e) {
-            this.mouseMoveStata = false
-            var width = e.clientX - this.beginClientX
-            if (width < this.maxwidth) {
-                document.getElementsByClassName("handler")[0].style.left =
-                    0 + "px"
-                document.getElementsByClassName("drag_bg")[0].style.width =
-                    0 + "px"
+            this.mouseMoveStatus = false
+            let width = e.clientX - this.beginClientX
+            if (width < this.maxWidth) {
+                this.select(".handler").style.left = 0 + "px"
+                this.select(".drag_bg").style.width = 0 + "px"
             }
         },
         sendMsgToParent() {
@@ -77,14 +73,10 @@ export default {
         }
     },
     mounted() {
-        this.maxwidth =
+        this.maxWidth =
             this.$refs.dragDiv.clientWidth - this.$refs.moveDiv.clientWidth
-        document
-            .getElementsByTagName("html")[0]
-            .addEventListener("mousemove", this.mouseMoveFn)
-        document
-            .getElementsByTagName("html")[0]
-            .addEventListener("mouseup", this.moseUpFn)
+        this.select("html").addEventListener("mousemove", this.mouseMoveFn)
+        this.select("html").addEventListener("mouseup", this.moseUpFn)
     }
 }
 </script>
@@ -117,11 +109,11 @@ export default {
 .drag_bg {
     background-color: #faebd7;
     height: 34px;
-    width: 0px;
+    width: 0;
 }
 .drag_text {
     position: absolute;
-    top: 0px;
+    top: 0;
     width: 100%;
     text-align: center;
     -moz-user-select: none;
