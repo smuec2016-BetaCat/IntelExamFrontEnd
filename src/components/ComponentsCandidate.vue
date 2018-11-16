@@ -33,13 +33,13 @@
 export default {
     name: "ComponentsCandidate",
     methods: {
-        goto: function() {
+        goto() {
             this.$router.push({ path: "/Examlnit" })
         },
-        messagewarn: function() {
+        messagewarn() {
             alert("Something is wrong with the information of this Candidate!")
         },
-        screenChange: function() {
+        screenChange() {
             document.getElementById("my-candidate").style.height =
                 window.innerHeight + "px"
         }

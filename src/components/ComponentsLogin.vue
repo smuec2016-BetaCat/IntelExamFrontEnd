@@ -22,7 +22,7 @@
 					<div class="md-layout-item md-small-size-100">
 						<md-field>
 							<label>密码</label>
-							<md-input type="password" v-model.trim="$v.form.password.$model" v-on:click="slidebar"></md-input>
+							<md-input type="password" v-model.trim="$v.form.password.$model" v-on:keydown="slidebar"></md-input>
 							<div class="error" v-if="!$v.form.password.required && $v.form.password.$anyDirty">您必须填写密码</div>
 							<!--<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>-->
 							<div class="error2" v-if="!dataFromChild && $v.form.password.$anyDirty">您需要通过以下验证</div>
@@ -74,22 +74,13 @@ export default {
         }
     },
     methods: {
-        screenChange: function() {
+        screenChange() {
             document.getElementById("my-form").style.height =
                 window.innerHeight + "px"
         },
-        isPc: function() {
-            var userAgentInfo = navigator.userAgent
-            var Agents = [
-                "Android",
-                "iPhone",
-                "SymbianOS",
-                "Windows Phone",
-                "iPad",
-                "iPod"
-            ]
-            var flag = true
-            for (var v = 0; v < Agents.length; v++) {
+        isPc() {
+            let [userAgentInfo,flag,Agents] = [navigator.userAgent,true,["Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"]]
+            for (let v = 0; v < Agents.length; v++) {
                 if (userAgentInfo.indexOf(Agents[v]) > 0) {
                     flag = false
                     break
@@ -97,10 +88,10 @@ export default {
             }
             this.flag = flag
         },
-		showMsgFromChild:function(data){
+		showMsgFromChild(data){
             this.dataFromChild = data
 		},
-        PostAndLog: function() {
+        PostAndLog() {
             if (this.flag){
                 if (this.$v.form.$invalid) {
                     this.$v.$touch()
@@ -120,10 +111,10 @@ export default {
                 this.goto()
 			}
         },
-        goto: function() {
+        goto() {
             this.$router.push({ path: "/CandidateVerify" })
         },
-		slidebar:function () {
+		slidebar() {
 			this.slide = true
         },
 

@@ -19,9 +19,7 @@ export default {
         }
     },
     methods: {
-        select: function(selector) {
-            return document.querySelector(selector)
-        },
+        select: selector => document.querySelector(selector),
         mousedownFn: function(e) {
             if (!this.confirmSuccess) {
                 e.preventDefault && e.preventDefault()
