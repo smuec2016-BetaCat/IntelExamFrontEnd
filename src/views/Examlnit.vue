@@ -1,16 +1,6 @@
 <template>
-	<div :style="formStyle" style="display:flex">
-		<div class="md-layout md-gutter" style="margin: auto">
-			<div class="md-layout-item md-xsmall-size-100">
-				<exam-type-card></exam-type-card>
-			</div>
-			<div class="md-layout-item md-xsmall-size-100">
-				<exam-type-card></exam-type-card>
-			</div>
-			<div class="md-layout-item md-xsmall-size-100">
-				<exam-type-card></exam-type-card>
-			</div>
-		</div>
+	<div>
+		<ExamTypeCard></ExamTypeCard>
 	</div>
 </template>
 
@@ -19,14 +9,6 @@ import ExamTypeCard from "../components/ExamTypeCard"
 export default {
     name: "Examlnit",
     components: { ExamTypeCard },
-    computed: {
-        formStyle: () => {
-            let screenHeight = document.body.clientHeight
-            return {
-                height: screenHeight + "px"
-            }
-        }
-    }
 }
 </script>
 

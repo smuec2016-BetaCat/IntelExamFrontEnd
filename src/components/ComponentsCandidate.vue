@@ -11,13 +11,11 @@
 					</div>
 					<div class="md-layout-item md-size-10"></div>
 					<div class="md-layout-item  md-size-60 mustleft">
-						<h1>the message of the candidate</h1>
-						<h2>sex: not male ; not female</h2>
-						<h2>the item of test :ai wo jiu gen wo zou </h2>
-						<h2>more detaismore detaismore detaismore detaismore </h2>
-						<h2>more detais</h2>
-						<h2>more detais</h2>
-						<h2>more detais</h2>
+						<h1>考生信息</h1>
+						<h2>姓名: {{info.name}}</h2>
+						<h2>性别: {{info.sex}}</h2>
+						<h2>考试内容 :{{info.content}} </h2>
+						<h2>详情：{{info.details}}</h2>
 					</div>
 				</div>
 				<md-card-actions>
@@ -30,8 +28,15 @@
 </template>
 
 <script>
+const axios = require("axios")
+import global from "../Global"
 export default {
     name: "ComponentsCandidate",
+    data: function() {
+        return {
+            info: {}
+        }
+    },
     methods: {
         goto() {
             this.$router.push({ path: "/Examlnit" })
@@ -54,8 +59,19 @@ export default {
     },
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
+        axios
+            .get(global.apidomain + "/info")
+            .then(response => {
+                this.info = response.data.message
+            })
+            .catch(error => {
+                console.log(error)
+                console.log("非局域网ajax无法请求")
+            })
+            .then(function() {
+                console.log("ajax has been done")
+            })
     },
-    // the setInterval must be destroyed, or when router to other page will go wrong
     beforeDestroy: function() {
         clearInterval(this.t)
     }

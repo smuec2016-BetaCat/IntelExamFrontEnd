@@ -48,6 +48,8 @@
 import { required , numeric } from 'vuelidate/lib/validators'
 import SliderValidation from "./Slidervalidation";
 import {confirmSuccess} from "./Slidervalidation";
+const axios = require("axios")
+import global from "../Global"
 export default {
     name: "ComponentsLogin",
     components: {SliderValidation},
@@ -101,9 +103,22 @@ export default {
                     alert("您必须通过验证")
                 }
                 else {
-                    // push the form
-                    alert("虽然没有后端验证，不过您现在可以访问了")
-                    this.goto()
+                    axios.post(global.apidomain+'/login', {
+                        name:this.form.myname,
+                        password:this.form.password
+                    })
+                        .then(function (response) {
+                            console.log(response)
+                        })
+                        .catch(function (error) {
+                            console.log(error)
+                        });
+                    if(response.msg){
+                        this.goto()
+                    }
+                    else{
+                        alert("用户名或密码错误！")
+                    }
                 }
 			}
             else {
@@ -116,8 +131,7 @@ export default {
         },
 		slidebar() {
 			this.slide = true
-        },
-
+        }
     },
     computed: {
         formStyle: () => {
