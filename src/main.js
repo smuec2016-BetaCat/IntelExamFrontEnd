@@ -8,6 +8,9 @@ import "vue-material/dist/vue-material.min.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 import Vuelidate from "vuelidate"
 
+import axios from "axios"
+axios.defaults.baseURL = "http://itsyuekao.com:5000"
+axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded"
 
 Vue.use(Vuelidate)
 Vue.use(VueMaterial)

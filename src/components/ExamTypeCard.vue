@@ -22,7 +22,6 @@
 
 <script>
 const axios = require("axios")
-import global from "../Global"
 export default {
     name: "ExamTypeCard",
     data() {
@@ -53,7 +52,7 @@ export default {
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
         axios
-            .get(global.apidomain + "/message")
+            .get("/message")
             .then(response => {
                 this.info = response.data.message
             })

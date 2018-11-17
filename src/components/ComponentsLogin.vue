@@ -35,6 +35,12 @@
 						<slider-validation v-if="slide" v-on:listenToChildEvent="showMsgFromChild"></slider-validation>
 					</div>
 				</div>
+
+				<div class="md-layout md-gutter">
+					<div class="md-layout-item md-small-size-100">
+						<span>{{msg}}</span>
+					</div>
+				</div>
 			</md-card-content>
 
 			<md-card-actions>
@@ -49,7 +55,7 @@ import { required , numeric } from 'vuelidate/lib/validators'
 import SliderValidation from "./Slidervalidation";
 import {confirmSuccess} from "./Slidervalidation";
 const axios = require("axios")
-import global from "../Global"
+// import global from "../global"
 export default {
     name: "ComponentsLogin",
     components: {SliderValidation},
@@ -58,6 +64,7 @@ export default {
             slide:false,
 			dataFromChild: false,
 			flag:true,
+	        msg:"",
             form: {
                 myname: "",
                 password: ""
@@ -103,22 +110,22 @@ export default {
                     alert("您必须通过验证")
                 }
                 else {
-                    axios.post(global.apidomain+'/login', {
+                    axios.post("/test", {
                         name:this.form.myname,
                         password:this.form.password
                     })
-                        .then(function (response) {
-                            console.log(response)
+	                    .then(response=> {
+                            this.msg = response.data.msg
+		                    if(!this.msg){
+                                this.goto()
+		                    }
+		                    else {
+		                        this.msg = "用户名或密码错误"
+		                    }
                         })
-                        .catch(function (error) {
+                        .catch(error=> {
                             console.log(error)
-                        });
-                    if(response.msg){
-                        this.goto()
-                    }
-                    else{
-                        alert("用户名或密码错误！")
-                    }
+                        })
                 }
 			}
             else {
