@@ -7,15 +7,14 @@ import VueMaterial from "vue-material"
 import "vue-material/dist/vue-material.min.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 import Vuelidate from "vuelidate"
-
-import axios from "axios"
-axios.defaults.baseURL = "http://itsyuekao.com:5000"
-axios.defaults.headers["Content-Type"] = "application/x-www-form-urlencoded"
+import global from "./global"
+// axios.defaults.baseURL = "http://localhost:8080"
 
 Vue.use(Vuelidate)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.component("v-chart", ECharts)
+Vue.prototype.$global = global
 
 new Vue({
     router,

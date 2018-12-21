@@ -5,7 +5,6 @@
 			<md-card-header>
 				<div class="md-title">考官登录</div>
 			</md-card-header>
-
 			<md-card-content>
 				<div class="md-layout md-gutter">
 					<div class="md-layout-item md-small-size-100">
@@ -22,19 +21,19 @@
 					<div class="md-layout-item md-small-size-100">
 						<md-field>
 							<label>密码</label>
-							<md-input type="password" v-model.trim="$v.form.password.$model" v-on:keydown="slidebar"></md-input>
+							<md-input type="password" v-model.trim="$v.form.password.$model"></md-input>
 							<div class="error" v-if="!$v.form.password.required && $v.form.password.$anyDirty">您必须填写密码</div>
-							<!--<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>-->
-							<div class="error2" v-if="!dataFromChild && $v.form.password.$anyDirty">您需要通过以下验证</div>
+							<div class="error2" v-if="$v.form.$error">工号或者密码填写错误</div>
+							<!--<div class="error2" v-if="!dataFromChild && $v.form.password.$anyDirty">您需要通过以下验证</div>-->
 						</md-field>
 					</div>
 				</div>
 				<br>
-				<div class="md-layout md-gutter">
-					<div class="md-layout-item md-small-size-100">
-						<slider-validation v-if="slide" v-on:listenToChildEvent="showMsgFromChild"></slider-validation>
-					</div>
-				</div>
+				<!--<div class="md-layout md-gutter">-->
+					<!--<div class="md-layout-item md-small-size-100">-->
+						<!--<slider-validation v-if="slide" v-on:listenToChildEvent="showMsgFromChild"></slider-validation>-->
+					<!--</div>-->
+				<!--</div>-->
 
 				<div class="md-layout md-gutter">
 					<div class="md-layout-item md-small-size-100">
@@ -54,8 +53,7 @@
 import { required , numeric } from 'vuelidate/lib/validators'
 import SliderValidation from "./Slidervalidation";
 import {confirmSuccess} from "./Slidervalidation";
-const axios = require("axios")
-// import global from "../global"
+import axios from 'axios'
 export default {
     name: "ComponentsLogin",
     components: {SliderValidation},
@@ -87,57 +85,31 @@ export default {
             document.getElementById("my-form").style.height =
                 window.innerHeight + "px"
         },
-        isPc() {
-            let [userAgentInfo,flag,Agents] = [navigator.userAgent,true,["Android","iPhone","SymbianOS","Windows Phone","iPad","iPod"]]
-            for (let v = 0; v < Agents.length; v++) {
-                if (userAgentInfo.indexOf(Agents[v]) > 0) {
-                    flag = false
-                    break
-                }
-            }
-            this.flag = flag
-        },
-		showMsgFromChild(data){
-            this.dataFromChild = data
-		},
         PostAndLog() {
-            if (this.flag){
-                if (this.$v.form.$invalid) {
-                    this.$v.$touch()
-                    this.slidebar()
-                }
-                else if (!this.dataFromChild) {
-                    alert("您必须通过验证")
-                }
-                else {
-                    axios.post("/test", {
-                        name:this.form.myname,
-                        password:this.form.password
-                    })
-	                    .then(response=> {
-                            this.msg = response.data.msg
-		                    if(!this.msg){
-                                this.goto()
-		                    }
-		                    else {
-		                        this.msg = "用户名或密码错误"
-		                    }
-                        })
-                        .catch(error=> {
-                            console.log(error)
-                        })
-                }
-			}
+            if (this.$v.form.$invalid) {
+                this.$v.$touch()
+            }
             else {
-				alert("暂不支持移动端验证，直接进行路由跳转")
-                this.goto()
-			}
+                axios.post("/test", {
+                    name:this.form.myname,
+                    password:this.form.password
+                })
+                    .then(response=> {
+                        this.msg = response.data.msg
+	                    if(!this.msg){
+                            this.goto()
+	                    }
+	                    else {
+	                        this.msg = "用户名或密码错误"
+	                    }
+                    })
+                    .catch(error=> {
+                        console.log(error)
+                    })
+            }
         },
         goto() {
             this.$router.push({ path: "/CandidateVerify" })
-        },
-		slidebar() {
-			this.slide = true
         }
     },
     computed: {
@@ -151,7 +123,6 @@ export default {
     // when the second loop , this is the first page we see
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
-		this.isPc()
     },
     beforeDestroy: function() {
         clearInterval(this.t)
