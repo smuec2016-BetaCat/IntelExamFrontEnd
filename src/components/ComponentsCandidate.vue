@@ -26,15 +26,15 @@
 						</Table>
 						<Table>
 							<template slot="key">科目:</template>
-							<template slot="value">{{information.subject}}</template>
+							<template slot="value">{{information.subject.subject}}|{{information.vedio.name}}</template>
 						</Table>
 						<Table>
 							<template slot="key">考试地点:</template>
-							<template slot="value">{{information.place}}</template>
+							<template slot="value">{{information.address}}</template>
 						</Table>
 						<Table>
 							<template slot="key">考试时间:</template>
-							<template slot="value">{{information.time}}</template>
+							<template slot="value">{{information.examination_time}}</template>
 						</Table>
 					</div>
 					<div class="md-layout-item md-elevation-1 md-size-25" style="margin: auto">
@@ -45,8 +45,17 @@
 					<div class="md-layout-item md-size-5"></div>
 				</div>
 				<md-card-actions style="margin: 0 20px">
-					<md-button class="md-accent md-raised" v-on:click=messagewarn>学生缺考 | 下一位考生</md-button>
+					<md-button class="md-accent md-raised" v-on:click="next">学生缺考 | 下一位考生</md-button>
 					<md-button class="md-primary md-raised" v-on:click="goto">确认信息 | 准备考试</md-button>
+					<md-dialog :md-active.sync="showDialog">
+						<md-dialog-title>考试结束！</md-dialog-title>
+
+						<md-dialog-content>没有更多的考生了。</md-dialog-content>
+
+						<md-dialog-actions>
+							<md-button class="md-primary" @click="back">确定 | 返回登录</md-button>
+						</md-dialog-actions>
+					</md-dialog>
 				</md-card-actions>
 			</md-card>
 		</div>
@@ -55,29 +64,73 @@
 
 <script>
 import axios from "axios"
-import Table from "./table";
+import Table from "./table"
 export default {
     name: "ComponentsCandidate",
     components: { Table },
     data: function() {
         return {
             information: {
-                ticket_number: 6551310015040264,
-                name: "杨机智",
-                identity_number: 310102199807223104,
-                subject: "三级钢琴考试",
-                place: "上海市浦东新区上海海事大学",
-                time: "2018年12月21日16:00",
-                sex: "男"
-            }
+	            id: 0,
+	            identity_number: "无",
+	            ticket_number: "无",
+	            name: "无",
+	            sex: "无",
+	            age: null,
+	            phone: "无",
+	            address: "无",
+	            email: "无",
+	            examination_time: "无",
+	            grades: 0,
+	            vedio_id: 1,
+	            examination_status: 0,
+	            photo_id: 1,
+	            teacher_id: 1,
+	            photo: {
+		            id: 1,
+		            url: "www.baidu.com"
+	            },
+	            vedio: {
+		            id: 1,
+		            name: "无",
+		            url: "www.baidu.com",
+		            subject_id: 1
+	            },
+	            subject: {
+		            id: 1,
+		            subject: "无 "
+	            }
+            },
+	        showDialog: false
         }
     },
     methods: {
         goto() {
             this.$router.push({ path: "/Dashboard" })
         },
-        messagewarn() {
-            alert("Something is wrong with the information of this Candidate!")
+	    back(){
+            this.$router.push({path:'/'})
+	    },
+        next() {
+            axios.post("/", {
+                id: this.information.id,
+                grade: 0,
+                status: 1
+            })
+	            .then(response=>{
+		            this.getInformation()
+	            })
+        },
+        getInformation() {
+            axios.get("/").then(response => {
+            	if (response.data.information === "null"){
+					this.showDialog = true
+	            }
+            	else {
+		            this.information = response.data.information
+		            this.$global.setInformation(this.information)
+	            }
+            })
         },
         screenChange() {
             document.getElementById("my-candidate").style.height =
@@ -94,18 +147,7 @@ export default {
     },
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
-        axios
-            .get("/info")
-            .then(response => {
-                this.info = response.data.message
-            })
-            .catch(error => {
-                console.log(error)
-                console.log("非局域网ajax无法请求")
-            })
-            .then(function() {
-                console.log("ajax has been done")
-            })
+        this.getInformation()
     },
     beforeDestroy: function() {
         clearInterval(this.t)

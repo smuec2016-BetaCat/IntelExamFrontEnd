@@ -4,7 +4,10 @@ export default {
     // setUser(object) {
     //     this.user = object
     // }
-
+    information:null,
+    setInformation(object){
+        this.information = object
+    },
     isPc() {
         let [userAgentInfo, flag, Agents] = [
             navigator.userAgent,

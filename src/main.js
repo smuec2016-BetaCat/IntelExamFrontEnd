@@ -8,14 +8,14 @@ import "vue-material/dist/vue-material.min.css"
 // import "../node_modules/@fortawesome/fontawesome-free/css/all.min.css"
 import Vuelidate from "vuelidate"
 import global from "./global"
-// axios.defaults.baseURL = "http://localhost:8080"
+import axios from 'axios'
 
 Vue.use(Vuelidate)
 Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.component("v-chart", ECharts)
 Vue.prototype.$global = global
-
+axios.defaults.baseURL = "http://127.0.0.1:5000"
 new Vue({
     router,
     render: h => h(App)

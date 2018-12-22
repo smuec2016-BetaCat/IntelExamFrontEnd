@@ -1,6 +1,10 @@
 <template>
 	<md-toolbar class="md-primary">
-		<h3 class="md-title">Here has a music name</h3>
+		<h3 class="md-title">
+			考生:{{this.$global.information.name}} |
+			演奏曲目：{{this.$global.information.subject.subject}}
+			{{this.$global.information.vedio.name}}
+		</h3>
 	</md-toolbar>
 </template>
 
