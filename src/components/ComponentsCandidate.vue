@@ -1,7 +1,7 @@
 <template>
 	<div style="display: flex" :style="formStyle" id="my-candidate">
 		<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item md-size-80">
-			<md-card class="md-elevation-2">
+			<md-card class="md-elevation-2" style="opacity: 0.95">
 				<div style="padding: 30px 0 20px 0">
 					<h1 style="margin: 0;">2018年12月全国音乐考试考生信息</h1>
 				</div>
@@ -161,5 +161,8 @@ export default {
 }
 .mustleft {
     text-align: left;
+}
+#my_candidate{
+	opacity: 0.5;
 }
 </style>

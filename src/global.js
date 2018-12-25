@@ -4,7 +4,9 @@ export default {
     // setUser(object) {
     //     this.user = object
     // }
-    information:null,
+    information:{
+
+    },
     setInformation(object){
         this.information = object
     },
