@@ -15,7 +15,7 @@ Vue.use(VueMaterial)
 Vue.config.productionTip = false
 Vue.component("v-chart", ECharts)
 Vue.prototype.$global = global
-axios.defaults.baseURL = "http://192.168.1.108:5000/api/v0"
+axios.defaults.baseURL = "http://192.168.1.103:5000/api/v0"
 new Vue({
     router,
     render: h => h(App)

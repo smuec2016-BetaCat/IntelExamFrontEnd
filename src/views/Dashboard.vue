@@ -4,7 +4,7 @@
 			<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item md-size-80">
 				<md-card class="md-elevation-2" style="opacity: 0.95">
 
-					<div class="md-layout md-gutter md-alignment-center-center">
+					<div class="md-layout md-alignment-center-center">
 						<div class="md-layout-item">
 							<div style="display: flex;height: 300px">
 								<div style="margin: auto;">
@@ -16,13 +16,23 @@
 
 						</div>
 						<div class="md-layout-item md-layout md-alignment-center-center">
-							<!--<score-ring></score-ring>-->
+							<md-list>
+								<md-list-item>
+									<div class="md-title">
+										{{this.$global.information.subject.subject}} |
+										 {{this.$global.information.vedio.name}}
+									</div>
+								</md-list-item>
+								<md-list-item class="md-body-2">
+									<Timer ref="timer"></Timer>
+								</md-list-item>
+								<md-list-item>3</md-list-item>
+							</md-list>
 						</div>
 					</div>
 
-					<br><br>
-					<md-button v-on:click="goto" class="md-raised md-primary">开始考试</md-button>
-					<md-button v-on:click="goto" class="md-raised md-primary">重置</md-button>
+					<md-button v-on:click="start" class="md-raised md-primary">{{timing?"停止考试":"开始考试"}}</md-button>
+					<md-button v-on:click="reset" class="md-raised md-primary">重置</md-button>
 					<md-dialog-prompt
 							:md-active.sync="active"
 							@md-confirm="postGrade"
@@ -57,16 +67,18 @@ import TrackVisualization from "../components/TrackVisualization"
 import ScoreRing from "../components/ScoreRing"
 import Navigation from "../components/Navigation"
 import axios from 'axios'
+import Timer from "../components/Timer";
 export default {
     name: "Dashboard",
-    components: { Navigation, ScoreRing, TrackVisualization },
+    components: {Timer, Navigation, ScoreRing, TrackVisualization },
     data() {
         return {
             active: false,
             value: null,
 	        showDialog:false,
 	        flag:false,
-	        second:false
+	        second:false,
+	        timing:false
         }
     },
     methods: {
@@ -93,6 +105,14 @@ export default {
 	    screenChange() {
 		    document.getElementById("my-candidate").style.height =
 			    window.innerHeight + "px"
+	    },
+	    start(){
+        	this.timing = !this.timing
+        	this.$refs.timer.startBtnClicked()
+	    },
+	    reset(){
+        	this.timing = false
+		    this.$refs.timer.resetBtnClicked()
 	    }
     },
     computed: {
@@ -128,39 +148,12 @@ export default {
 	background-color: black;
 }
 .singer{
-	width: 250px;
-	height: 250px;
-	position: relative;
-	background: url("../assets/singer.png") no-repeat;
-	background-size: 100% 100%;
-	border-radius: 50%;
-}
-.singerImg{
-	width: 200px;
-	height: 200px;
-	position: absolute;
-	left: 0;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	margin: auto;
-	border-radius: 50%;
+
 }
 img{
 	max-height: 100%;
 	max-width: 100%;
 	height: 100%;
 	width: 100%;
-}
-.rotate{
-	animation: rotate 20s linear infinite;
-}
-@keyframes rotate {
-	0% {
-		transform: rotate(0deg);
-	}
-	100% {
-		transform: rotate(360deg);
-	}
 }
 </style>
