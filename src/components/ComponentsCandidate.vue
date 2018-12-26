@@ -37,9 +37,9 @@
 							<template slot="value">{{information.examination_time}}</template>
 						</Table>
 					</div>
-					<div class="md-layout-item md-elevation-1 md-size-25" style="margin: auto">
+					<div class="md-layout-item md-elevation-1 md-size-20" style="margin: auto">
 						<md-card-media>
-							<img src="../assets/person.png" alt="People">
+							<img src="../assets/person1.png" alt="People">
 						</md-card-media>
 					</div>
 					<div class="md-layout-item md-size-5"></div>
@@ -112,7 +112,7 @@ export default {
             this.$router.push({path:'/'})
 	    },
         next() {
-            axios.post("/", {
+            axios.post("/candidate", {
                 id: this.information.id,
                 grade: 0,
                 status: 1
@@ -122,7 +122,12 @@ export default {
 	            })
         },
         getInformation() {
-            axios.get("/").then(response => {
+            axios.get("/candidate",{
+	            params: {
+		            teacher_id: this.$global.teacher.id
+	            }
+            })
+	            .then(response => {
             	if (response.data.information === "null"){
 					this.showDialog = true
 	            }
@@ -145,9 +150,11 @@ export default {
             }
         }
     },
+	mounted:function(){
+		this.getInformation()
+	},
     created: function() {
         this.t = setInterval(this.screenChange, 2000)
-        this.getInformation()
     },
     beforeDestroy: function() {
         clearInterval(this.t)

@@ -3,24 +3,24 @@
 		<div style="display: flex" :style="formStyle" id="my-candidate">
 			<div style="margin: auto" class="md-small-size-80 md-xsmall-size-100 md-layout-item md-size-80">
 				<md-card class="md-elevation-2" style="opacity: 0.95">
-					<!--<navigation></navigation>-->
-					<div style="position: relative">
-						<div style="position: absolute;z-index: 100;left: 530px;top: 20px">
-							1111
+
+					<div class="md-layout md-gutter md-alignment-center-center">
+						<div class="md-layout-item">
+							<div style="display: flex;height: 300px">
+								<div style="margin: auto;">
+									<div class="singer">
+										<img src="../assets/bdf.jpg" alt="" class="singerImg rotate">
+									</div>
+								</div>
+							</div>
+
 						</div>
-						<md-progress-spinner md-mode="indeterminate"></md-progress-spinner>
-						<br>
+						<div class="md-layout-item md-layout md-alignment-center-center">
+							<!--<score-ring></score-ring>-->
+						</div>
 					</div>
 
-					<!--<TrackVisualization></TrackVisualization>-->
-					<div class="md-layout md-gutter md-alignment-center-center">
-						<div class="md-layout-item md-size-10"></div>
-						<div class="md-layout-item md-layout md-alignment-center-center">
-							<score-ring></score-ring>
-						</div>
-						<div class="md-layout-item md-size-10"></div>
-					</div>
-					<br><br><br><br><br><br>
+					<br><br>
 					<md-button v-on:click="goto" class="md-raised md-primary">开始考试</md-button>
 					<md-button v-on:click="goto" class="md-raised md-primary">重置</md-button>
 					<md-dialog-prompt
@@ -80,7 +80,7 @@ export default {
 
         },
 	    postGrade(){
-        	axios.post('/',{
+        	axios.post('/candidate',{
 		        id: this.$global.information.id,
 		        grade: this.value,
 		        status: 2
@@ -126,5 +126,41 @@ export default {
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: black;
+}
+.singer{
+	width: 250px;
+	height: 250px;
+	position: relative;
+	background: url("../assets/singer.png") no-repeat;
+	background-size: 100% 100%;
+	border-radius: 50%;
+}
+.singerImg{
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	left: 0;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	margin: auto;
+	border-radius: 50%;
+}
+img{
+	max-height: 100%;
+	max-width: 100%;
+	height: 100%;
+	width: 100%;
+}
+.rotate{
+	animation: rotate 20s linear infinite;
+}
+@keyframes rotate {
+	0% {
+		transform: rotate(0deg);
+	}
+	100% {
+		transform: rotate(360deg);
+	}
 }
 </style>

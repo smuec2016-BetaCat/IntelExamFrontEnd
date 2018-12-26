@@ -4,6 +4,12 @@ export default {
     // setUser(object) {
     //     this.user = object
     // }
+    teacher:{
+
+    },
+    setTeacher(object){
+        this.teacher = object
+    },
     information:{
 
     },

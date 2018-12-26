@@ -90,21 +90,16 @@ export default {
                 this.$v.$touch()
             }
             else {
-                axios.post("/test", {
-                    name:this.form.myname,
+                axios.post("/login", {
+                    teacher_id:this.form.myname,
                     password:this.form.password
                 })
                     .then(response=> {
-                        this.msg = response.data.msg
-	                    if(!this.msg){
-                            this.goto()
-	                    }
-	                    else {
-	                        this.msg = "用户名或密码错误"
-	                    }
+                        this.$global.setTeacher(response.data.teacher)
+	                    this.goto()
                     })
                     .catch(error=> {
-                        console.log(error)
+                        this.msg = "用户名或密码错误"
                     })
             }
         },
