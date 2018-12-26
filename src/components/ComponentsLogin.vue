@@ -1,7 +1,7 @@
 <!--suppress ALL -->
 <template>
 	<form v-bind:style="formStyle"  class="md-layout" id="my-form">
-		<md-card class="md-layout-item md-size-25 md-small-size-50 md-xsmall-size-100" style="margin: auto">
+		<md-card class="md-layout-item md-size-25 md-medium-size-30 md-small-size-35 md-xsmall-size-90" style="margin: auto">
 			<md-card-header>
 				<div class="md-title">考官登录</div>
 			</md-card-header>
